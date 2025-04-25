@@ -17,13 +17,13 @@ public class DataInitializer implements CommandLineRunner {
 
     private final UserService userService;
     private final RoleService roleService;
-    private final PasswordEncoder passwordEncoder;
+
 
     @Autowired
     public DataInitializer(UserService userService, RoleService roleService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.roleService = roleService;
-        this.passwordEncoder = passwordEncoder;
+
     }
 
     @Override
@@ -44,7 +44,7 @@ public class DataInitializer implements CommandLineRunner {
             adminUser.setName("Admin");
             adminUser.setSureName("Adminov");
             adminUser.setUsername("admin");
-            adminUser.setPassword(passwordEncoder.encode("admin"));
+            adminUser.setPassword("admin");
             Set<Role> adminRoles = new HashSet<>();
             adminRoles.add(adminRole);
             adminUser.setRoles(adminRoles);
@@ -55,7 +55,7 @@ public class DataInitializer implements CommandLineRunner {
             regularUser.setName("User");
             regularUser.setSureName("Userov");
             regularUser.setUsername("user");
-            regularUser.setPassword(passwordEncoder.encode("user"));
+            regularUser.setPassword("user");
             Set<Role> userRoles = new HashSet<>();
             userRoles.add(userRole);
             regularUser.setRoles(userRoles);
